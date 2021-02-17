@@ -1,27 +1,9 @@
 var crypto = require('crypto');
+var fs = require('fs');
 
-let users = [
-    {
-        id: 1,
-        username: "Ced",
-        password: "123",
-        name: "Cedric",
-        surname: "Boissinot",
-        age: "21",
-        groupId: 1
-    },
-    {
-        id: 2,
-        username: "Amiral",
-        password: "456",
-        name: "Amir",
-        surname: "Lachemet",
-        age: "22",
-        groupId: 1
+var users = JSON.parse(fs.readFileSync('./data/users.json', 'utf8'));
 
-    }
-
-];
+console.log(users)
 
 const addUser = (username,password,name, surname, age, groupId) => {
     let salt = crypto.randomBytes(16).toString('base64');
@@ -30,10 +12,16 @@ const addUser = (username,password,name, surname, age, groupId) => {
                                      .digest("base64");
     
     password = salt + "$" + hash;
-
     const id =  users[users.length - 1].id + 1;
     const newUser = { id, username, password, name, surname, age, groupId }
     users = [...users, newUser];
+    users.push(newUser);
+    fs.writeFile('./data/users.json', JSON.stringify(users),'utf8', function(err){
+        if(err) throw err;
+        console.log('complete');
+    });
+    console.log(users);
+
     
     return {...newUser};
 }
