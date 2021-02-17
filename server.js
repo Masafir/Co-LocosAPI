@@ -3,6 +3,7 @@ var { graphqlHTTP } = require('express-graphql');
 var { buildSchema } = require('graphql');
 var { addUser, getUsers} = require('./data/users');
 var { addGroup, getGroups} = require('./data/groups');
+var { addlistItem, getlistItems} = require('./data/listItems');
 
 var cors = require('cors');
  
@@ -28,6 +29,13 @@ var schema = buildSchema(`
     listItem : [List]
   },
 
+  type ListItem {
+    id: Int,
+    name: String,
+    state: String,
+    quantity: String
+  },
+
   type CommonAccount {
     id: Int,
     users: [User]
@@ -44,13 +52,15 @@ var schema = buildSchema(`
     users: [User],
     groups: [Group],
     lists: [List],
+    listItems: [ListItem],
     accounts: [CommonAccount],
     tasks: [Task]
   }
 
   type Mutation {
     addUser(username: String, password: String, name: String, surname:String, age: String, groupId: Int): String,
-    addGroup(name: String): String
+    addGroup(name: String): String,
+    addlistItem(name: String, state: String, quantity: String): String
   }
 `);
  
@@ -80,7 +90,17 @@ var root = {
     const {name} = args;
     const newGroup = addGroup(name);
     return `Created: ${newGroup.id} ${newGroup.name}`;
-  }
+  },
+
+  listItems: () => {
+    return getlistItems();
+  },
+
+  addlistItem: args => {
+    const {name, state, quantity} = args;
+    const newListItem = addlistItem(name, state, quantity);
+    return `Created: ${newListItem.id} ${newListItem.name} ${newListItem.state}`;
+  },
 };
  
 var app = express();
@@ -93,6 +113,3 @@ app.use('/graphql', graphqlHTTP({
 app.listen(4000);
 console.log('Running a GraphQL API server at http://localhost:4000/graphql');
 
-function savePersonToPublicFolder(person, callback) {
-  fs.writeFile('./public/person.json', JSON.stringify(person), callback);
-}
