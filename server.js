@@ -6,6 +6,7 @@ var { addGroup, getGroups} = require('./data/groups');
 var { addlistItem, getlistItems} = require('./data/listItems');
 
 var cors = require('cors');
+const { getLists, addList } = require('./data/lists');
  
 // Construct a schema, using GraphQL schema language
 var schema = buildSchema(`
@@ -26,11 +27,17 @@ var schema = buildSchema(`
 
   type List {
     id: Int,
-    listItem : [List]
+    listItem : [ListItem]
   },
 
   type ListItem {
     id: Int,
+    name: String,
+    state: String,
+    quantity: String
+  },
+
+  input ListItemInput {
     name: String,
     state: String,
     quantity: String
@@ -60,7 +67,8 @@ var schema = buildSchema(`
   type Mutation {
     addUser(username: String, password: String, name: String, surname:String, age: String, groupId: Int): String,
     addGroup(name: String): String,
-    addlistItem(name: String, state: String, quantity: String): String
+    addlistItem(name: String, state: String, quantity: String): String,
+    addList(listItem: [ListItemInput]): [List]
   }
 `);
  
@@ -101,6 +109,16 @@ var root = {
     const newListItem = addlistItem(name, state, quantity);
     return `Created: ${newListItem.id} ${newListItem.name} ${newListItem.state}`;
   },
+
+  lists: () => {
+    return getLists();
+  },
+
+  addList: args => {
+    const {listItems:[id, name, state, quantity]} = args;
+    const newList = addList(listItems[id, name, state, quantity]);
+    return `Created: ${newList.id} ${newList.name}`;
+  }
 };
  
 var app = express();
