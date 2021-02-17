@@ -2,6 +2,7 @@ var express = require('express');
 var { graphqlHTTP } = require('express-graphql');
 var { buildSchema } = require('graphql');
 var { addUser, getUsers} = require('./data/users');
+var { addGroup, getGroups} = require('./data/groups');
 
 var cors = require('cors');
  
@@ -48,7 +49,8 @@ var schema = buildSchema(`
   }
 
   type Mutation {
-    addUser(username: String, password: String, name: String, surname:String, age: String, groupId: Int): String
+    addUser(username: String, password: String, name: String, surname:String, age: String, groupId: Int): String,
+    addGroup(name: String): String
   }
 `);
  
@@ -68,6 +70,16 @@ var root = {
     return `Created: ${newUser.id} ${newUser.username} ${newUser.password} - ${
       newUser.name
     }`;
+  },
+
+  groups: () => {
+    return getGroups();
+  },
+
+  addGroup: args => {
+    const {name} = args;
+    const newGroup = addGroup(name);
+    return `Created: ${newGroup.id} ${newGroup.name}`;
   }
 };
  
