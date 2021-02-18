@@ -159,6 +159,48 @@ app.post("/updateUserTask", jsonParser, (req,res)=>{
     }
 })
 
+app.post("/list", jsonParser, (req,res)=>{
+    try {
+        console.log(req);
+        let colocSearch = colocs.find(e => e.name == req.body.coloc);
+        let colocIndex = colocs.findIndex(t => t.name == req.body.coloc);
+        let newGroupColoc = [...colocs];
+        console.log(colocSearch)
+        if(colocSearch && colocSearch != undefined){
+            let listIndex = colocSearch.lists.findIndex(t => t.name == req.body.list.name)
+            let newList = {}
+            if (listIndex > 0){
+                newList = req.body.list;
+                colocSearch.lists.splice(listIndex, 1, newList);
+                newGroupColoc.splice(colocIndex,1, colocSearch);
+                let data = JSON.stringify(newGroupColoc);
+                fs.writeFileSync('./coloc.json', data, err => {
+                    console.log(err);
+                })
+            }
+            else {
+                newList = req.body.list;
+                colocSearch.lists.push(newList);
+                newGroupColoc.splice(colocIndex,1, colocSearch);
+                let data = JSON.stringify(newGroupColoc);
+                fs.writeFileSync('./coloc.json', data, err => {
+                    console.log(err);
+                })
+            }
+        }
+        else {
+            return ("no coloc")  
+        }
+
+        res.send("ok")
+        res.status(200)
+    }
+    catch(error){
+        return res.status(400).json({ error: error.toString() });
+    }
+});
+
+
 app.post("/users", (req, res)=>{
     
 });
