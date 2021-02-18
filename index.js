@@ -34,7 +34,6 @@ app.post("/task", jsonParser, (req, res, err)=>{
             let taskIndex = colocSearch.tasks.findIndex(t => t.value == req.body.task.value)
             let newTask = {}
             if (taskIndex > 0){
-                let taskSearch = colocSearch.tasks[taskIndex];
                 newTask = req.body.task;
                 colocSearch.tasks.splice(taskIndex, 1, newTask);
                 newGroupColoc.splice(colocIndex,1, colocSearch);
@@ -67,20 +66,19 @@ app.post("/task", jsonParser, (req, res, err)=>{
 
 });
 
-app.post("/user", jsonParser (req, res)=>{
+app.post("/user", jsonParser, (req, res, err)=>{
     try {
-        console.log(req)
+        console.log(req);
         let colocSearch = colocs.find(e => e.name == req.body.coloc);
         let colocIndex = colocs.findIndex(t => t.name == req.body.coloc);
         let newGroupColoc = [...colocs];
         console.log(colocSearch)
         if(colocSearch && colocSearch != undefined){
-            let taskIndex = colocSearch.tasks.findIndex(t => t.value == req.body.task.value)
+            let userIndex = colocSearch.users.findIndex(t => t.value == req.body.user.value)
             let newUser = {}
-            if (taskIndex > 0){
-                let taskSearch = colocSearch.tasks[taskIndex];
-                newTask = req.body.task;
-                colocSearch.tasks.splice(taskIndex, 1, newTask);
+            if (userIndex > 0){
+                newUser = req.body.user;
+                colocSearch.users.splice(userIndex, 1, newUser);
                 newGroupColoc.splice(colocIndex,1, colocSearch);
                 let data = JSON.stringify(newGroupColoc);
                 fs.writeFileSync('./coloc.json', data, err => {
@@ -88,8 +86,8 @@ app.post("/user", jsonParser (req, res)=>{
                 })
             }
             else {
-                newTask = req.body.task;
-                colocSearch.tasks.push(newTask);
+                newUser = req.body.user;
+                colocSearch.users.push(newUser);
                 newGroupColoc.splice(colocIndex,1, colocSearch);
                 let data = JSON.stringify(newGroupColoc);
                 fs.writeFileSync('./coloc.json', data, err => {
