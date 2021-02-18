@@ -19,7 +19,7 @@ app.get('/colocs', (req, res)=>{
     res.send(colocSearch);
 });
 app.get('/getcolocs',(req,res)=>{
-    res.send(colocs);
+    res.send(colocs.map(c => c.name));
 });
 
 app.post("/task", jsonParser, (req, res, err)=>{
@@ -161,7 +161,6 @@ app.post("/updateUserTask", jsonParser, (req,res)=>{
 
 app.post("/list", jsonParser, (req,res)=>{
     try {
-        console.log(req);
         let colocSearch = colocs.find(e => e.name == req.body.coloc);
         let colocIndex = colocs.findIndex(t => t.name == req.body.coloc);
         let newGroupColoc = [...colocs];
