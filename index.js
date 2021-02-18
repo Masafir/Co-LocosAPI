@@ -74,7 +74,7 @@ app.post("/user", jsonParser, (req, res, err)=>{
         let newGroupColoc = [...colocs];
         console.log(colocSearch)
         if(colocSearch && colocSearch != undefined){
-            let userIndex = colocSearch.users.findIndex(t => t.value == req.body.user.value)
+            let userIndex = colocSearch.users.findIndex(t => t.name == req.body.user.name)
             let newUser = {}
             if (userIndex > 0){
                 newUser = req.body.user;
@@ -106,6 +106,58 @@ app.post("/user", jsonParser, (req, res, err)=>{
         return res.status(400).json({ error: error.toString() });
     }
 });
+
+app.post("/updateUserTask", jsonParser, (req,res)=>{
+    console.log("jsuis la");
+    try {
+        let colocSearch = colocs.find(e => e.name == req.body.coloc);
+        let colocIndex = colocs.findIndex(t => t.name == req.body.coloc);
+        let newGroupColoc = [...colocs];
+        if(colocSearch && colocSearch != undefined){
+            let userIndex =  colocSearch.users.findIndex(t => t.name == req.body.user.name);
+            let taskIndex = colocSearch.tasks.findIndex(t => t.value == req.body.task.value);
+            let newUser = {};
+            if(userIndex > 0){
+                console.log("user>0")
+                newUser = req.body.user;
+                colocSearch.users.splice(userIndex, 1, newUser);
+            }
+            else {
+                console.log("user<0")
+                newUser = req.body.user;
+                colocSearch.users.push(newUser);
+            }
+            if(taskIndex > 0){
+                console.log("taskIndex >0")
+                newTask = req.body.task;
+                colocSearch.tasks.splice(taskIndex,1,newTask);
+            }
+            else{
+                console.log("taskIndex < 0")
+                newTask = req.body.task;
+                colocSearch.tasks.push(newTask)
+            }
+
+
+            newGroupColoc.splice(colocIndex,1, colocSearch);
+            let data = JSON.stringify(newGroupColoc);
+            console.log(data)
+            fs.writeFileSync('./coloc.json', data, err => {
+                console.log(err);
+            })
+            res.send("ok")
+            res.send(200)
+        }
+        else {
+            return "no coloc"
+        }
+
+
+    }
+    catch(error){
+        return res.status(400).json({ error: error.toString() });
+    }
+})
 
 app.post("/users", (req, res)=>{
     
