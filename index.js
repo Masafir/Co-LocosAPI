@@ -108,6 +108,7 @@ app.post("/updateUserTask", jsonParser, (req,res)=>{
         let colocSearch = colocs.find(e => e.name == req.body.coloc);
         let colocIndex = colocs.findIndex(t => t.name == req.body.coloc);
         let newGroupColoc = [...colocs];
+        let newTask = {};
         if(colocSearch && colocSearch != undefined){
             let userIndex =  colocSearch.users.findIndex(t => t.name == req.body.user.name);
             let taskIndex = colocSearch.tasks.findIndex(t => t.value == req.body.task.value);
