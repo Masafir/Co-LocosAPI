@@ -1,9 +1,14 @@
 import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Connection } from 'typeorm';
 import { ColocsModule } from './colocs/colocs.module';
 
 @Module({
-  imports: [ColocsModule],
+  imports: [TypeOrmModule.forRoot(),ColocsModule],
   controllers: [],
   providers: [],
 })
-export class AppModule {}
+export class AppModule {
+
+  constructor(private connection: Connection) {}
+}
