@@ -1,19 +1,19 @@
 var express = require('express');
 var { graphqlHTTP } = require('express-graphql');
 var { buildSchema } = require('graphql');
-var { addUser, getUsers} = require('./data/users');
-var { addGroup, getGroups} = require('./data/groups');
-var { addlistItem, getlistItems} = require('./data/listItems');
+var { addUser, getUsers} = require('./users');
+var { addGroup, getGroups} = require('./groups');
+var { addlistItem, getlistItems} = require('./listItems');
 
 var cors = require('cors');
-const { getLists, addList } = require('./data/lists');
+const { getLists, addList } = require('./lists');
  
 // Construct a schema, using GraphQL schema language
 var schema = buildSchema(`
   type User {
     id: Int,
     username: String,
-    password: String
+    password: String,
     name: String,
     surname: String,
     age: String,

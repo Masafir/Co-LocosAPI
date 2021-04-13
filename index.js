@@ -205,6 +205,15 @@ app.post("/users", (req, res)=>{
     
 });
 
+app.post("/deleteList", jsonParser, (req,res)=>{
+    try{
+
+    }
+    catch(error){
+       return res.status(400).json({ error: error.toString() });
+    }
+});
+
 app.listen(4000);
 console.log('Running a GraphQL API server at http://localhost:4000/');
 
