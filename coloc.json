@@ -1,1 +1,430 @@
-[{"users":[],"tasks":[],"lists":[],"name":"Mercure","account":[]},{"users":[],"tasks":[],"lists":[],"name":"Vénus","account":[]},{"users":[],"tasks":[],"lists":[],"name":"Terre","account":[]},{"users":[],"tasks":[],"lists":[],"name":"Mars","account":[]},{"users":[],"tasks":[],"lists":[],"name":"Jupiter","account":[]},{"users":[{"name":"Amir","tasks":[],"balance":[{"value":5,"owner":false,"emitter":"Leo","name":"Kebab"},{"value":10,"owner":true,"emitter":"Amir","name":"Bières"},{"value":37,"owner":false,"emitter":"Valentin","name":"Internet"}]},{"name":"Leo","tasks":[{"value":"Faire les courses","status":1},{"value":"Machine à lavée","status":1},{"value":"TEST","status":1}],"balance":[{"value":5,"owner":true,"emitter":"Leo","name":"Kebab"}]},{"name":"Cedric","tasks":[],"count":[],"balance":[]},{"name":"Valentin","tasks":[],"balance":[]},{"name":"Polo","tasks":[{"value":"Rincer le lavabo","status":1}],"balance":[]},{"name":"Constantin","tasks":[{"value":"Nouvelle Tache osef","status":1}],"balance":[]}],"lists":[{"name":"liste de course","items":[{"value":"Tomate","count":1,"status":1},{"value":"Lait","count":1,"status":1},{"value":"Oeuf","count":6,"status":1}]},{"name":"liste de soirée 42","items":[{"value":"Chips","count":2,"status":1},{"value":"Bière","count":3,"status":1},{"value":"Pizza","count":4,"status":1}]},{"name":"la semaine du classico","items":[{"value":"Tomate","count":1,"status":0},{"value":"Lait","count":1,"status":1},{"value":"Oeuf","count":6,"status":0},{"value":"Céréales","count":1,"status":1},{"value":"ToutLeBonheurduMonde","count":0,"status":1}]},{"name":"","items":[]},{"name":"Testouille","items":[]},{"name":"ze","items":[]},{"name":"aze","items":[]},{"name":"azeaze","items":[]},{"name":"ETZSTOEUAR","items":[{"value":"UN truc random","count":1,"status":0}]},{"name":"liste de course","items":[{"value":"Tomate","count":1,"status":1},{"value":"Lait","count":1,"status":1},{"value":"Oeuf","count":6,"status":1}]}],"tasks":[{"value":"Passer le balais","status":1},{"value":"Vaisselle","status":1},{"value":"Faire les courses","status":2},{"value":"Machine à lavée","status":1},{"value":"Changer la litière","status":2},{"value":"Nettoyer la douche","status":1},{"value":"Payer internet","status":2},{"value":"machin","status":1},{"value":"Nouvelle tache","status":2},{"value":"Nouvelle Tache osef","status":1},{"value":"TEST","status":1},{"value":"test","status":2}],"name":"Saturne","account":[]}]
+[
+    {
+        "users": [],
+        "tasks": [],
+        "lists": [],
+        "name": "Mercure",
+        "account": []
+    },
+    {
+        "users": [],
+        "tasks": [],
+        "lists": [],
+        "name": "Vénus",
+        "account": []
+    },
+    {
+        "users": [],
+        "tasks": [],
+        "lists": [],
+        "name": "Terre",
+        "account": []
+    },
+    {
+        "users": [],
+        "tasks": [],
+        "lists": [],
+        "name": "Mars",
+        "account": []
+    },
+    {
+        "users": [],
+        "tasks": [],
+        "lists": [],
+        "name": "Jupiter",
+        "account": []
+    },
+    {
+        "users": [
+            {
+                "name": "Amir",
+                "tasks": [],
+                "balance": [
+                    {
+                        "value": 24,
+                        "owner": false,
+                        "resolved": true,
+                        "emitter": "Leo",
+                        "participant": [
+                            "Leo",
+                            "Amir",
+                            "Cedric",
+                            "Valentin"
+                        ],
+                        "name": "Kebab"
+                    },
+                    {
+                        "value": 12.6,
+                        "owner": true,
+                        "participant": [
+                            "Amir",
+                            "Cedric",
+                            "Valentin"
+                        ],
+                        "resolved": false,
+                        "emitter": "Amir",
+                        "name": "Pizza"
+                    },
+                    {
+                        "value": 37,
+                        "owner": false,
+                        "participant": [
+                            "Leo",
+                            "Amir",
+                            "Cedric",
+                            "Valentin"
+                        ],
+                        "resolved": false,
+                        "emitter": "Valentin",
+                        "name": "Internet"
+                    }
+                ]
+            },
+            {
+                "name": "Leo",
+                "tasks": [
+                    {
+                        "value": "Faire les courses",
+                        "status": 1
+                    },
+                    {
+                        "value": "Machine à lavée",
+                        "status": 1
+                    },
+                    {
+                        "value": "TEST",
+                        "status": 1
+                    }
+                ],
+                "balance": [
+                    {
+                        "value": 24,
+                        "owner": true,
+                        "resolved": true,
+                        "emitter": "Leo",
+                        "participant": [
+                            "Leo",
+                            "Amir",
+                            "Cedric",
+                            "Valentin"
+                        ],
+                        "name": "Kebab"
+                    }
+                ]
+            },
+            {
+                "name": "Cedric",
+                "tasks": [
+                    {
+                        "value": "azerty",
+                        "status": 0
+                    },
+                    {
+                        "value": "azerty",
+                        "status": 0
+                    },
+                    {
+                        "value": "azerty",
+                        "status": 0
+                    },
+                    {},
+                    {},
+                    {}
+                ],
+                "count": [],
+                "balance": [
+                    {
+                        "value": 12.6,
+                        "owner": false,
+                        "participant": [
+                            "Amir",
+                            "Cedric",
+                            "Valentin"
+                        ],
+                        "resolved": false,
+                        "emitter": "Amir",
+                        "name": "Pizza"
+                    }
+                ]
+            },
+            {
+                "name": "Valentin",
+                "tasks": [],
+                "balance": [
+                    {
+                        "value": 37,
+                        "owner": true,
+                        "resolved": false,
+                        "participant": [
+                            "Amir",
+                            "Cedric",
+                            "Leo",
+                            "Valentin"
+                        ],
+                        "emitter": "Valentin",
+                        "name": "Internet"
+                    },
+                    {
+                        "value": 12.6,
+                        "owner": true,
+                        "participant": [
+                            "Amir",
+                            "Cedric",
+                            "Valentin"
+                        ],
+                        "resolved": false,
+                        "emitter": "Amir",
+                        "name": "Pizza"
+                    }
+                ]
+            },
+            {
+                "name": "Polo",
+                "tasks": [
+                    {
+                        "value": "Rincer le lavabo",
+                        "status": 1
+                    }
+                ],
+                "balance": []
+            },
+            {
+                "name": "Constantin",
+                "tasks": [
+                    {
+                        "value": "Nouvelle Tache osef",
+                        "status": 1
+                    }
+                ],
+                "balance": []
+            }
+        ],
+        "lists": [
+            {
+                "name": "liste de course",
+                "items": [
+                    {
+                        "value": "Tomate",
+                        "count": 1,
+                        "status": 1
+                    },
+                    {
+                        "value": "Lait",
+                        "count": 1,
+                        "status": 1
+                    },
+                    {
+                        "value": "Oeuf",
+                        "count": 6,
+                        "status": 1
+                    }
+                ]
+            },
+            {
+                "name": "liste de soirée 42",
+                "items": [
+                    {
+                        "value": "Chips",
+                        "count": 2,
+                        "status": 1
+                    },
+                    {
+                        "value": "Bière",
+                        "count": 3,
+                        "status": 1
+                    },
+                    {
+                        "value": "Pizza",
+                        "count": 4,
+                        "status": 1
+                    }
+                ]
+            },
+            {
+                "name": "la semaine du classico",
+                "items": [
+                    {
+                        "value": "Tomate",
+                        "count": 1,
+                        "status": 0
+                    },
+                    {
+                        "value": "Lait",
+                        "count": 1,
+                        "status": 1
+                    },
+                    {
+                        "value": "Oeuf",
+                        "count": 6,
+                        "status": 0
+                    },
+                    {
+                        "value": "Céréales",
+                        "count": 1,
+                        "status": 1
+                    },
+                    {
+                        "value": "ToutLeBonheurduMonde",
+                        "count": 0,
+                        "status": 1
+                    }
+                ]
+            },
+            {
+                "name": "",
+                "items": []
+            },
+            {
+                "name": "Testouille",
+                "items": []
+            },
+            {
+                "name": "ze",
+                "items": [
+                    {
+                        "value": "azeaze",
+                        "count": 1,
+                        "status": 0
+                    },
+                    {
+                        "value": "Mangère",
+                        "count": 1,
+                        "status": 0
+                    }
+                ]
+            },
+            {
+                "name": "aze",
+                "items": []
+            },
+            {
+                "name": "azeaze",
+                "items": []
+            },
+            {
+                "name": "ETZSTOEUAR",
+                "items": [
+                    {
+                        "value": "UN truc random",
+                        "count": 1,
+                        "status": 0
+                    }
+                ]
+            },
+            {
+                "name": "liste de course",
+                "items": [
+                    {
+                        "value": "Tomate",
+                        "count": 1,
+                        "status": 1
+                    },
+                    {
+                        "value": "Lait",
+                        "count": 1,
+                        "status": 1
+                    },
+                    {
+                        "value": "Oeuf",
+                        "count": 6,
+                        "status": 1
+                    }
+                ]
+            }
+        ],
+        "tasks": [
+            {
+                "value": "Passer le balais",
+                "status": 1
+            },
+            {
+                "value": "Vaisselle",
+                "status": 1
+            },
+            {
+                "value": "Faire les courses",
+                "status": 2
+            },
+            {
+                "value": "Machine à lavée",
+                "status": 1
+            },
+            {
+                "value": "Changer la litière",
+                "status": 2
+            },
+            {
+                "value": "Nettoyer la douche",
+                "status": 1
+            },
+            {
+                "value": "Payer internet",
+                "status": 2
+            },
+            {
+                "value": "machin",
+                "status": 1
+            },
+            {
+                "value": "Nouvelle tache",
+                "status": 2
+            },
+            {
+                "value": "Nouvelle Tache osef",
+                "status": 1
+            },
+            {
+                "value": "TEST",
+                "status": 1
+            },
+            {
+                "value": "test",
+                "status": 2
+            },
+            {
+                "value": "azerty",
+                "status": 0
+            },
+            {}
+        ],
+        "name": "Saturne",
+        "spends": [
+            {
+                "value": 24,
+                "resolved": true,
+                "participant": [
+                    "Leo",
+                    "Amir",
+                    "Cedric",
+                    "Valentin"
+                ],
+                "emitter": "Leo",
+                "name": "Kebab"
+            },
+            {
+                "value": 15,
+                "resolved": false,
+                "participant": [
+                    "Amir",
+                    "Cedric",
+                    "Valentin"
+                ],
+                "emitter": "Amir",
+                "name": "Pizza"
+            },
+            {
+                "value": 37,
+                "resolved": false,
+                "participant": [
+                    "Amir",
+                    "Cedric",
+                    "Leo",
+                    "Valentin"
+                ],
+                "emitter": "Valentin",
+                "name": "Internet"
+            }
+        ],
+        "account": []
+    }
+]
