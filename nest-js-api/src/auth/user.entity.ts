@@ -1,4 +1,6 @@
 import { BaseEntity, Column, Entity, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
+import {v1 as uuid} from 'uuid';
+
 
 @Entity()
 export class User extends BaseEntity {
@@ -7,9 +9,6 @@ export class User extends BaseEntity {
 
     @Column()
     username: string;
-
-    @Column()
-    password: string;
 
     @Column()
     name: string;
@@ -21,7 +20,15 @@ export class User extends BaseEntity {
     lastname: string;
 
     @Column()
-    age: string;    
+    age: string;
+    
+    @Column()
+    mail: string;
 
+    @Column()
+    password: string;
+
+    @Column()
+    image: uuid;
 
 }

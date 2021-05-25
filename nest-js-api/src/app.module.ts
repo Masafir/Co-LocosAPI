@@ -5,9 +5,10 @@ import { ColocsModule } from './colocs/colocs.module';
 import { AuthModule } from './auth/auth.module';
 import { GroupsModule } from './groups/groups.module';
 import { TasksModule } from './tasks/tasks.module';
+import { ListsModule } from './lists/lists.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(),ColocsModule, AuthModule, GroupsModule, TasksModule],
+  imports: [TypeOrmModule.forRoot(),ColocsModule, AuthModule, GroupsModule, TasksModule, ListsModule],
   controllers: [],
   providers: [],
 })
