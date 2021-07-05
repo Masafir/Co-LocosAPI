@@ -7,9 +7,10 @@ import { GroupsModule } from './groups/groups.module';
 import { TasksModule } from './tasks/tasks.module';
 import { ListsModule } from './lists/lists.module';
 import { SpendsModule } from './spends/spends.module';
+import { PartSpendsUserModule } from './part-spends-user/part-spends-user.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(),ColocsModule, AuthModule, GroupsModule, TasksModule, ListsModule, SpendsModule],
+  imports: [TypeOrmModule.forRoot(),ColocsModule, AuthModule, GroupsModule, TasksModule, ListsModule, SpendsModule, PartSpendsUserModule],
   controllers: [],
   providers: [],
 })
