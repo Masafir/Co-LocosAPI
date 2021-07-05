@@ -60,6 +60,7 @@ export class UsersService {
     const foundedUser = await this.UserRepository.findOne({select: ["password","id"],where: {mail}});
 
     if(foundedUser){
+      console.log(" founded user : ",foundedUser);
       const checkedPass = await bcrypt.compare(password, foundedUser.password)
       if(checkedPass)
       {
