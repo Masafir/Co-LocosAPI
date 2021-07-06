@@ -1,13 +1,11 @@
-import { BaseEntity, Column, Entity, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
+import { PartSpendUser } from "src/part-spends-user/part-spend-user.entity";
+import { BaseEntity, Column, Entity, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Spend extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
-    
-    // @OneToMany(type => Photo, photo => photo.user)
-    // photos: Photo[];
-    
+
     @Column()
     name: string;
 
@@ -16,5 +14,8 @@ export class Spend extends BaseEntity {
 
     @Column()
     value: string;
+
+    @ManyToOne(() => PartSpendUser, partSpendUser => partSpendUser.spends)
+    partSpendUser: PartSpendUser
 
 }
