@@ -1,4 +1,5 @@
-import { BaseEntity, Column, Entity, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
+import { Task } from "src/tasks/task.entity";
+import { BaseEntity, Column, Entity, ManyToMany, ManyToOne, OneToMany, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Group extends BaseEntity {
@@ -7,5 +8,8 @@ export class Group extends BaseEntity {
 
     @Column()
     name: string;
+
+    @OneToMany(type => Task, task => task.group)
+    tasks: Task[]
 
 }
