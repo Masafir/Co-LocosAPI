@@ -17,6 +17,11 @@ export class TasksController {
     getTaskById(@Param('id') id : number) : Task {
         return this.tasksService.getTaskById(id);
     }
+    
+    // get task by user
+    // get task by group
+    // update task
+    // update task status
 
     @UsePipes(ValidationPipe)
     @Post()
