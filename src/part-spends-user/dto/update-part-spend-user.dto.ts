@@ -2,13 +2,12 @@ import { Optional } from '@nestjs/common';
 import { Type } from 'class-transformer';
 import { IsBoolean, IsNotEmpty, IsNumber } from 'class-validator'
 
-export class UpdateListDto {
+export class UpdatePartSpendUserDto {
     @IsNotEmpty()
-    id: number;
-    @IsNotEmpty()
-    name: string;   
-    @Optional()
+    id: number
     @IsBoolean()
-    status: boolean;
+    value: boolean
+    @IsBoolean()
+    resolved: boolean;
 
 }

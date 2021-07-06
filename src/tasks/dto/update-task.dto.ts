@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString } from "class-validator"
+import { IsBoolean, IsNotEmpty, IsString } from "class-validator"
 
 export class UpdateTaskDto {
     @IsNotEmpty()
@@ -6,4 +6,6 @@ export class UpdateTaskDto {
     @IsNotEmpty()
     @IsString()
     name: string
+    @IsBoolean()
+    status: boolean
 }

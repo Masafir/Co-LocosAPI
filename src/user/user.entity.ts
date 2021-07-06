@@ -1,4 +1,6 @@
-import { BaseEntity, Column, Entity, PrimaryColumn, PrimaryGeneratedColumn, Unique } from "typeorm";
+import { PartSpendUser } from "src/part-spends-user/part-spend-user.entity";
+import { Spend } from "src/spends/spend.entity";
+import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryColumn, PrimaryGeneratedColumn, Unique } from "typeorm";
 import {v1 as uuid} from 'uuid';
 
 
@@ -25,6 +27,13 @@ export class User extends BaseEntity {
 
     @Column({select: false})
     password: String;
+
+    @OneToOne(()=> Spend)
+    @JoinColumn()
+    spend: Spend;
+
+    @ManyToOne(() => PartSpendUser, partSpendUser => partSpendUser.users)
+    partSpendUser: PartSpendUser
 
     /* @Column({nullable: true})
     image: uuid; */

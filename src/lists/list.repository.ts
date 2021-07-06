@@ -6,11 +6,10 @@ import { List } from "./list.entity";
 export class ListRepository extends Repository<List> {
 
     async createList(createListDto : CreateListDto): Promise<List> {
-        const {name, quantity, status} =  createListDto;
+        const {name, status} =  createListDto;
 
         const list = new List();
         list.name = name;
-        list.quantity = quantity;
         list.status = status;
     
         await list.save();
