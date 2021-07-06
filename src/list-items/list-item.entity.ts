@@ -1,8 +1,8 @@
-import { ListItem } from "src/list-items/list-item.entity";
+import { List } from "src/lists/list.entity";
 import { BaseEntity, Column, Entity, ManyToOne, OneToMany, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
-export class List extends BaseEntity {
+export class ListItem extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
@@ -12,7 +12,10 @@ export class List extends BaseEntity {
     @Column()
     status: boolean;
 
-    @ManyToOne(() => ListItem, listitem => listitem.lists)
-    listItem: ListItem
+    @Column()
+    quantity: number;
+
+    @OneToMany(type => List, list => list.listItem)
+    lists: List[]
 
 }

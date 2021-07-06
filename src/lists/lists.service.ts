@@ -38,7 +38,6 @@ export class ListsService {
             id: uuid(),
             name: createList.name,
             status: createList.status,
-            quantity: createList.quantity
         }
         const insert = await this.listRepository.createList(list);
         if(!insert){
@@ -50,7 +49,6 @@ export class ListsService {
     async updateListById(updateList: UpdateListDto): Promise<List> {
         const update : List = await this.getListById(updateList.id)
         update.name = updateList.name;
-        update.quantity = updateList.quantity;
         update.status =  updateList.status;
 
         await update.save()

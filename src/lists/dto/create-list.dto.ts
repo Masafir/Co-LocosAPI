@@ -6,9 +6,6 @@ export class CreateListDto {
     @IsNotEmpty()
     name: string;   
     @Optional()
-    @IsNumber()
-    @Type(() => Number)
-    quantity: number;
     @IsBoolean()
     status: boolean;
 
