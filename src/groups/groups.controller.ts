@@ -1,12 +1,20 @@
+import { Patch } from '@nestjs/common';
 import { Body, Controller, Get, Param, Post, UsePipes, ValidationPipe } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
 import { CreateGroupDto } from './dto/create-Group.dto';
-import { Group } from './Group.entity';
-import { GroupsService } from './Groups.service';
+import { UpdateGroupDto } from './dto/update-Group.dto';
+import { Group } from './group.entity';
+import { GroupRepository } from './group.repository';
+import { GroupsService } from './groups.service';
 
 @Controller('groups')
 export class GroupsController {
 
-    constructor(private GroupsService : GroupsService) {}
+    constructor(
+    @InjectRepository(GroupRepository)
+    private groupRepository: GroupRepository,
+    private GroupsService : GroupsService
+    ) {}
 
     @Get()
     getAllGroups() : Promise<Group[]> {
@@ -21,9 +29,17 @@ export class GroupsController {
     @UsePipes(ValidationPipe)
     @Post()
     createGroup(@Body() createGroupDto : CreateGroupDto) {
-        if(createGroupDto)
+    if(createGroupDto)
         {
-         return this.GroupsService.createGroup(createGroupDto);
+            return this.GroupsService.createGroup(createGroupDto);
+        }
+    }
+
+    @UsePipes(ValidationPipe)
+    @Patch()
+    async updateGroup(@Body() updateGroupDto: UpdateGroupDto){
+        if(updateGroupDto){
+            return this.GroupsService.updateGroup(updateGroupDto);
         }
     }
 

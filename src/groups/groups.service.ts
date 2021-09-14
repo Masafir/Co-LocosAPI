@@ -8,8 +8,6 @@ import { GroupRepository } from './Group.repository';
 
 @Injectable()
 export class GroupsService {
-    private Groups: Group[] = []
-
 
     constructor(
         @InjectRepository(GroupRepository)
@@ -34,21 +32,16 @@ export class GroupsService {
     }
 
     async createGroup(createGroup: CreateGroupDto): Promise<Group>{
-        const Group = {
-            name: createGroup.name
-        }
-        const insert = await this.GroupRepository.createGroup(Group);
-        if(!insert){
+        const group = await this.GroupRepository.createGroup(createGroup);
+        if(!group){
             throw new Error("Group not inserted");
         }
-       return insert;
+       return group;
     }
 
-    async updateGroupById(updateGroup: UpdateGroupDto): Promise<Group> {
-        const update : Group = await this.getGroupById(updateGroup.id)
-        update.name = updateGroup.name;
-
-        await update.save()
-        return update;
+    async updateGroup(updateGroup: UpdateGroupDto): Promise<Group> {
+        const group : Group = await this.GroupRepository.updateGroup(updateGroup);
+        return group;
     }
+
 }

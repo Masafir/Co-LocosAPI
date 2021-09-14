@@ -9,7 +9,7 @@ export const typeormConfig: TypeOrmModuleOptions = {​
  
   username: process.env.DATABASE_USER || 'postgres',​
  
-  password: process.env.DATABASE_PASSWORD || 'uzumaki',​
+  password: process.env.DATABASE_PASSWORD || 'root',​
  
   database: process.env.DATABASE_NAME ||'colocos',​
  
