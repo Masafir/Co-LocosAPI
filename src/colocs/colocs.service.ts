@@ -3,41 +3,39 @@ import { Coloc } from './colocs.model';
 import {v1 as uuid} from 'uuid';
 import { CreateColocDto } from './dto/create-coloc.dto';
 import { UpdateColocDto } from './dto/update-coloc.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { ColocRepository } from './coloc.repository';
 
 
 
 @Injectable()
 export class ColocsService {
-    private colocs: Coloc[] = []
 
-    getAllColocs(): Coloc[]{
-        return this.colocs;
+    constructor(
+        @InjectRepository(ColocRepository)
+        private colocRepository: ColocRepository,
+    ) {}
+
+    async getAllColocs(): Promise<Coloc[]>{
+        return this.colocRepository.find();
     }
 
     @UsePipes(ValidationPipe)
-    getColocById(id: string): Coloc {
-        const coloc : Coloc = this.colocs.find((coloc) => coloc.id === id);
+    async getColocById(id: string): Promise<Coloc> {
+        const coloc : Coloc = await this.colocRepository.findOne(id);
         if (!coloc){
             throw new NotFoundException();
         }
         return coloc;
     }
 
-    createColoc(createColoc: CreateColocDto): Coloc{
-        const coloc: Coloc = {
-            id: uuid(),
-            name: createColoc.name
-        };
-        this.colocs.push(coloc);
+    async createColoc(createColoc: CreateColocDto): Promise<Coloc>{
+        const coloc: Coloc = await this.colocRepository.createColoc(createColoc);
         return coloc;
     }
 
-    updateColocById(updateColoc: UpdateColocDto): Coloc {
-        const coloc : Coloc = this.getColocById(updateColoc.id)
-        if(!coloc){
-            throw new NotFoundException();
-        }
-        coloc.name = updateColoc.name;
+    async updateColocById(updateColoc: UpdateColocDto): Promise<Coloc> {
+        const coloc : Coloc = await this.colocRepository.updateColoc(updateColoc);
         return coloc;
     }
 

@@ -9,18 +9,18 @@ export class ColocsController {
     constructor(private colocsService : ColocsService) {}
 
     @Get()
-    getAllColocs() : Coloc[] {
+    async getAllColocs() : Promise<Coloc[]> {
         return this.colocsService.getAllColocs();
     }
 
     @Get(':id')
-    getColocById(@Param('id') id :string) : Coloc {
+    async getColocById(@Param('id') id :string) : Promise<Coloc> {
         return this.colocsService.getColocById(id);
     }
 
     @UsePipes(ValidationPipe)
     @Post()
-    createColoc(@Body() createColocDto : CreateColocDto) : Coloc {
+    async createColoc(@Body() createColocDto : CreateColocDto) : Promise<Coloc> {
         return this.colocsService.createColoc(createColocDto);
     }
 
