@@ -27,6 +27,7 @@ export class GroupRepository extends Repository<Group> {
 
     async deleteGroup(id: string) {
         await Group.delete(id);
+        console.log('test')
     }
 
 }
